@@ -1,0 +1,21 @@
+# config/services.yaml
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  hcnx_hcnx_bundle.Log4Php:
+    class: hcnx\hcnx_bundle_symfony\Log4Php
+    public: true
+  # TODO LIDOR : Si on veux mettre le chemin en brut dans les services du bundle Log4php
+  #    arguments:
+  #      $lib_path: '%env(log4php_path)%'
+  #      $config_path: '%kernel.project_dir%'
+
+  hcnx\hcnx_bundle_symfony\Log4Php: '@hcnx_hcnx_bundle.Log4Php'
+
+#    alias: hcnx_hcnx_bundle.log4php
+#    public: false

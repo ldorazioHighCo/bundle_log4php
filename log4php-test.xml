@@ -1,0 +1,26 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="myConsoleAppender" class="LoggerAppenderConsole" threshold="TRACE">
+    </appender>
+
+    <appender name="myTestUnitAppender" class="LoggerAppenderRollingFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date [%logger] %level -  %message%newline" />
+        </layout>
+        <param name="maxFileSize" value="1MB" />
+        <param name="maxBackupIndex" value="5" />
+        <param name="compress" value="1" />
+        <param name="file" value="/var/www/sites/Log4PhpBundle/testlog4php.log" />
+    </appender>
+
+
+    <logger name="TestUnit">
+        <appender_ref ref="myTestUnitAppender" />
+        <level value="trace" />
+    </logger>
+
+
+    <root>
+        <level value="DEBUG" />
+        <appender_ref ref="myConsoleAppender" />
+    </root>
+</configuration>
